@@ -2,25 +2,26 @@
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#f4f4f4; --card:#ffffff; --ink:#141414; --mute:#5b5b5b; --line:#dcdcdc;
+  --bg-a:#9b0000; --bg-b:#470000; --bg:#f4f4f4; --card:#ffffff; --ink:#141414; --mute:#5b5b5b; --line:#dcdcdc;
   --accent:#c00000; --accent-ink:#ffffff; --bad:#8f0000; --good:#1a7f4b;
   --emb:#8f0000; --sub:#c00000; --dtf:#141414; --sew:#e0554d; --man:#6b6b6b;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#121212; --card:#1c1c1c; --ink:#f2f2f2; --mute:#a8a8a8; --line:#333333;
+    --bg-a:#5c0000; --bg-b:#1f0000; --bg:#121212; --card:#1c1c1c; --ink:#f2f2f2; --mute:#a8a8a8; --line:#333333;
     --accent:#d32f2f; --accent-ink:#ffffff; --bad:#ff8a80; --good:#5fd39a;
     --emb:#e57373; --sub:#ff5252; --dtf:#f2f2f2; --sew:#ffab91; --man:#b0b0b0;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#121212; --card:#1c1c1c; --ink:#f2f2f2; --mute:#a8a8a8; --line:#333333;
+  --bg-a:#5c0000; --bg-b:#1f0000; --bg:#121212; --card:#1c1c1c; --ink:#f2f2f2; --mute:#a8a8a8; --line:#333333;
   --accent:#d32f2f; --accent-ink:#ffffff; --bad:#ff8a80; --good:#5fd39a;
   --emb:#e57373; --sub:#ff5252; --dtf:#f2f2f2; --sew:#ffab91; --man:#b0b0b0;
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);border-top:6px solid var(--accent);font:15px/1.45 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+html{background:var(--bg-b)}
+body{margin:0;min-height:100vh;color:var(--ink);border-top:6px solid #141414;font:15px/1.45 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background-color:var(--bg-b);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800' preserveAspectRatio='xMidYMid slice'%3E%3Cpath d='M1250 -50C900 150 1100 450 760 650S520 820 380 880L1300 900Z' fill='%23fff' fill-opacity='.045'/%3E%3Cg fill='none' stroke='%23fff' stroke-opacity='.18' stroke-width='2' stroke-dasharray='10 10' stroke-linecap='round'%3E%3Cpath d='M1250 -50C900 150 1100 450 760 650S520 820 380 880'/%3E%3Cpath d='M1250 20C960 200 1150 480 830 690S600 840 470 900'/%3E%3Cpath d='M1250 90C1020 250 1190 500 900 720S690 860 560 920'/%3E%3C/g%3E%3C/svg%3E"),radial-gradient(ellipse 60% 50% at 100% 0%,rgba(224,85,77,.35),transparent 70%),radial-gradient(ellipse 70% 60% at 0% 100%,rgba(0,0,0,.45),transparent 70%),linear-gradient(160deg,var(--bg-a),var(--bg-b));background-repeat:no-repeat;background-position:center;background-size:cover;background-attachment:fixed}
 .wrap{max-width:1100px;margin:0 auto;padding:16px}
 header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:16px}
 h1{margin:0;font-size:22px;letter-spacing:.2px}
@@ -68,3 +69,10 @@ label input,label select,label textarea{padding:9px 10px;border:1px solid var(--
 .fb{display:flex;justify-content:flex-end;gap:8px;margin-top:4px}
 textarea.csv{min-height:180px;font:12.5px/1.4 ui-monospace,Menlo,Consolas,monospace}
 .foot{margin:18px 0 4px;text-align:center;font-size:12.5px;color:var(--mute)}
+
+/* text and buttons that sit directly on the maroon background */
+h1{color:#fff}
+h1 small,.foot{color:rgba(255,255,255,.82)}
+header .btn.pri{background:#141414;border-color:rgba(255,255,255,.35);color:#fff}
+header .btn.pri:hover{background:#000}
+@media (prefers-reduced-motion:reduce){body{background-attachment:scroll}}
