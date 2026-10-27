@@ -9,19 +9,16 @@ No build step, no dependencies. Jobs are stored in the browser's localStorage.
 
 ```
 earlyworx-769/
-├── index.html              # page markup + dialogs
+├── index.html         # page markup + dialogs
+├── wrangler.json      # Cloudflare Workers config
 ├── css/
-│   └── styles.css          # theme (light/dark), layout, cards
+│   └── styles.css     # theme (light/dark), layout, cards
 ├── js/
-│   ├── config.js           # departments, statuses, storage key
-│   ├── utils.js            # helpers: $, esc, money, dates, uid
-│   ├── storage.js          # load / save / seed sample jobs
-│   └── app.js              # render, events, form, CSV export
-├── .github/workflows/
-│   └── pages.yml           # auto-deploy to GitHub Pages
-├── .gitignore
+│   ├── config.js      # departments, statuses, storage key
+│   ├── utils.js       # helpers: $, esc, money, dates, uid
+│   ├── storage.js     # load / save / seed sample jobs
+│   └── app.js         # render, events, form, CSV export
 └── README.md
-```
 
 Scripts load in the order listed in `index.html` (config → utils → storage → app).
 
