@@ -20,6 +20,7 @@ earlyworx-769/
 │   └── app.js         # render, events, form, CSV export
 └── README.md
 
+
 Scripts load in the order listed in `index.html` (config → utils → storage → app).
 
 ## Run locally
