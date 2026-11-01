@@ -1,7 +1,17 @@
 {
-  "name": "earlyworx-769",
+  "name": "earlyworx--clothing--production--management--system",
+  "main": "src/worker.js",
   "compatibility_date": "2026-10-27",
   "assets": {
-    "directory": "./"
-  }
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "earlyworx-db",
+      "database_id": "50c080a2-e138-4996-a9c9-bdbf7130ec7a"
+    }
+  ]
 }
