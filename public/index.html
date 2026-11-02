@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="en">
-<style>body{visibility:hidden}</style>
-<script>
-  fetch("/api/me").then(r => {
-    if (!r.ok) location.href = "/login.html";
-    else document.body.style.visibility = "visible";
-  });
-</script>  
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Earlyworx 769 · Production board</title>
+<style>body{visibility:hidden}</style>
+<script>
+  fetch("/api/me")
+    .then(r => {
+      if (!r.ok) location.href = "/login.html";
+      else document.body.style.visibility = "visible";
+    })
+    .catch(() => { location.href = "/login.html"; });
+</script>
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
