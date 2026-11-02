@@ -4,6 +4,10 @@
   "compatibility_date": "2025-01-01",
   "assets": { "directory": "./public" },
   "d1_databases": [
-    { "binding": "DB", "database_name": "earlyworx-db", "database_id": "50c080a2-e138-4996-a9c9-bdbf7130ec7a" }
+    {
+      "binding": "DB",
+      "database_name": "earlyworx-db",
+      "database_id": "50c080a2-e138-4996-a9c9-bdbf7130ec7a"
+    }
   ]
 }
