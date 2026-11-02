@@ -1,6 +1,6 @@
 {
   "name": "earlyworx--clothing--production--management--system",
-  "main": "src/workers.js",
+  "main": "src/worker.js",
   "compatibility_date": "2025-01-01",
   "assets": {
     "directory": "./public",
