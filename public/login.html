@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Earlyworx 769 · Login</title>
+  <style>
+    body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+           background:#111; color:#fff; font-family:system-ui,sans-serif; }
+    .card { background:#1b1b1d; padding:28px; border-radius:14px; width:min(360px,90vw); }
+    h1 { margin:0 0 4px; font-size:1.3rem; }
+    p.sub { margin:0 0 18px; color:#aaa; font-size:.9rem; }
+    input { width:100%; box-sizing:border-box; padding:12px; margin-bottom:12px; border-radius:8px;
+            border:1px solid #333; background:#111; color:#fff; font-size:1rem; }
+    button { width:100%; padding:12px; border:0; border-radius:8px; background:#fff; color:#111;
+             font-weight:700; font-size:1rem; cursor:pointer; }
+    #msg { color:#ff6b6b; min-height:1.2em; margin:0 0 10px; font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Earlyworx 769</h1>
+    <p class="sub" id="sub">Log in to the production board</p>
+    <p id="msg"></p>
+    <input id="username" placeholder="Username" autocomplete="username">
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+    <button id="go">Log in</button>
+  </div>
+
+  <script>
+    let setupMode = false;
+    const $ = (id) => document.getElementById(id);
+
+    fetch("/api/status").then(r => r.json()).then(s => {
+      if (!s.hasUsers) {
+        setupMode = true;
+        $("sub").textContent = "First time: create the owner account";
+        $("go").textContent = "Create owner account";
+        $("password").autocomplete = "new-password";
+      }
+    });
+
+    $("go").addEventListener("click", async () => {
+      $("msg").textContent = "";
+      const res = await fetch(setupMode ? "/api/setup" : "/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: $("username").value, password: $("password").value })
+      });
+      const data = await res.json();
+      if (res.ok) location.href = "/";
+      else $("msg").textContent = data.error || "Something went wrong";
+    });
+  </script>
+</body>
+</html>
